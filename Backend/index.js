@@ -12,7 +12,23 @@ import { errorHandler } from "./src/middleware/error-handler.js";
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173" }));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://your-frontend-name.onrender.com", // add your actual Render frontend URL
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use("/api", mainRouter);
 app.use(errorHandler);
