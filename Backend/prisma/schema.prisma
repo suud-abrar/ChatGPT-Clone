@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// your models here...
+enum Role {
+  user
+  assistant
+}
+
+model Conversation {
+  id         BigInt   @id @default(autoincrement())
+  role       Role
+  content    String   @db.LongText
+  tokenCount Int      @default(0)
+  createdAt  DateTime @default(now())
+}

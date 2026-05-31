@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^2.3.0",
+    "@prisma/client": "^6.19.3",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "lucide-react": "^1.16.0",
+    "mysql2": "^3.22.3"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "prisma": "^6.19.3"
+  },
+  "scripts": {
+    "start": "npx prisma db push && node index.js",
+    "dev": "nodemon index.js"
+  }
+}
