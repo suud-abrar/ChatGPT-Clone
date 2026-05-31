@@ -14,7 +14,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://chatptclone-frontend.onrender.com/", // add your actual Render frontend URL
+  "https://chatptclone-frontend.onrender.com", // add your actual Render frontend URL
 ];
 
 app.use(
