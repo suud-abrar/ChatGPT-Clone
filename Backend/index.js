@@ -36,17 +36,15 @@ async function startServer() {
   try {
     // const connection = await db.getConnection();
     // connection.release();
-    await prisma.$connect(); // 🔥 clean DB connection
-    app.listen(3888, (err) => {
-      if (err) {
-        throw err;
-      }
-      console.log("Server is running on port http://localhost:3888");
-      // Keep alive on Render free tier
+    await prisma.$connect();
+    const PORT = process.env.PORT || 3888;
+    app.listen(PORT, (err) => {
+      if (err) throw err;
+      console.log(`Server is running on port ${PORT}`);
       setInterval(
         () => {
           https
-            .get("https://your-app-name.onrender.com/api/health", (res) => {
+            .get("https://chatptclone.onrender.com/api/health", (res) => {
               console.log(`Self-ping: ${res.statusCode}`);
             })
             .on("error", (e) => {
@@ -60,4 +58,5 @@ async function startServer() {
     console.error("error starting server:", error.message);
   }
 }
+
 startServer();
