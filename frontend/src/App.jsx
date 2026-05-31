@@ -6,7 +6,8 @@ import MessageList from "./components/MessageList/MessageList";
 import ChatInput from "./components/ChatInput/ChatInput";
 import "./App.css";
 
-const API_BASE_URL = "http://localhost:3888/api";
+// const API_BASE_URL = "http://localhost:3888/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Use environment variable for API base URL
 
 function App() {
   const [conversations, setConversations] = useState([]);
